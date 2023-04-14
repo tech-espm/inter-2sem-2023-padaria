@@ -28,12 +28,8 @@ class IndexRoute {
 		res.render("index/teste2", opcoes);
 	}
 
-	public async teste3(req: app.Request, res: app.Response) {
-		let opcoes = {
-			layout: "casca-teste"
-		};
-
-		res.render("index/teste3", opcoes);
+	public async cadastro(req: app.Request, res: app.Response) {
+		res.render("index/cadastro");
 	}
 
 	public async produtos(req: app.Request, res: app.Response) {
