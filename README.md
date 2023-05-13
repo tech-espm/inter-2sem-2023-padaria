@@ -1,2 +1,2 @@
-# Peojeto Interdisciplinar 2º Semestre
+# Projeto Interdisciplinar 2º Semestre
 Sistema de controle para padaria
