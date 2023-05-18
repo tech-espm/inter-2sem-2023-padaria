@@ -1,11 +1,57 @@
 .pao {
     max-width: 100%;
+    width:200px; 
+    height:200px;
 }
 
 .logo {
     max-width: 100%;
 }
 
+.navlink {
+    font-size: 30px;
+}
+
 .navbar-custom {
     background-color: #e9c174;
+}
+
+.tamanho {
+    font-size: 5rem;
+}
+
+.limitador-titulo {
+	margin: 0 auto;
+
+
+}
+
+body {
+    color:black;
+}
+
+.nav-link {
+font-size: 18px;
+
+}
+.carousel-item {
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+}
+
+.pao2 {
+    padding-bottom: 3.5rem;
+    
+}
+
+h1 {
+font-size: 32px;
+font-weight: bold;
+color: #333;
+}
+
+.limitador-titulo {
+margin-left: 30rem;
+margin-right: 30rem;
 }
