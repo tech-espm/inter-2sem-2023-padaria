@@ -1,2 +1,2 @@
-# inter-2sem-2023-padaria
+# Projeto Interdisciplinar 2º Semestre
 Sistema de controle para padaria
