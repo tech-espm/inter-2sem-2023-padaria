@@ -32,6 +32,14 @@ class IndexRoute {
 		res.render("index/cadastro");
 	}
 
+	public async sobre(req: app.Request, res: app.Response) {
+		res.render("index/sobre");
+	}
+
+	public async historia(req: app.Request, res: app.Response) {
+		res.render("index/historia");
+	}
+
 	public async produtos(req: app.Request, res: app.Response) {
 		let produtoA = {
 			id: 1,

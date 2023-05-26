@@ -1,8 +1,5 @@
-<p>
-	Cadastro
-</p>
 
-<form id="formCadastro">
+<!--<form id="formCadastro">
 	<div class="form-group">
 		<label for="nome">Nome</label>
 		<input class="form-control" type="text" id="nome" name="nome" maxlength="100" />
@@ -21,7 +18,78 @@
 	<button class="btn btn-primary" type="submit">
 		Cadastrar
 	</button>
-</form>
+</form> -->
+
+<div class="container-fluid pt-3 my-md-5">
+	<div class="row">
+		<div class="col-md-6 py-2">
+			<div class="card">
+				<h3 class="card-header">CADASTRO DO PRODUTO</h3>
+				<div class="card-body">
+					<form id="formCadastro">
+						<div class="form-row">
+							<div class="form-group col-md-6">
+							  <label for="inputNome">Nome Produto</label>
+							  <input type="email" class="form-control" id="inputNome">
+							</div>
+							<div class="form-group col-md-6">
+							  <label for="inputCodigo">Código Produto</label>
+							  <input type="password" class="form-control" id="inputCodigo">
+							</div>
+						  </div>
+						  <div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="inputData">Data Inclusão</label>
+								<input type="date" class="form-control" id="inputDate" placeholder="Data">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="inputEndereco">Endereço Origem</label>
+								<input type="text" class="form-control" id="inputEndereco" placeholder="Rua Exemplo Nº 1">
+							  </div>
+						  </div>
+						  <div class="form-group">
+							<label for="inputTipoProd">Tipo de produto</label>
+							<input type="text" class="form-control" id="inputTipoProd" placeholder=" Salgados / Doces / Frios ">
+						  </div>
+						  <div class="form-row">
+							<div class="form-group col-md-6">
+							  <label for="inputMarca">Marca do produto</label>
+							  <input type="text" class="form-control" id="inputMarca">
+							</div>
+							<div class="form-group col-md-4">
+							  <label for="inputCategoria">Categoria do Produto</label>
+							  <select id="inputCategoria" class="form-control">
+								<option selected>Escolha</option>
+								<option>1</option>
+								<option>2</option>
+							  </select>
+							</div>
+							<div class="form-group col-md-2">
+							  <label for="inputEAN">EAN</label>
+							  <input type="text" class="form-control" id="inputEAN">
+							</div>
+						  </div>
+						  <div class="form-group">
+							<label for="imagem">Imagem Produto</label>
+							<input class="form-control" type="file" id="imagem" name="imagem" accept="image/*" />
+						</div>
+						  <div class="separar pb-2">
+
+							</style>
+						  </div>
+						  <hr class="mb-4">
+						  <button type="submit" class="btn btn-success btn py-3">Cadastrar</button>
+						  <button type="submit" class="btn btn-danger btn py-3">Deletar</button>
+						  <button type="submit" class="btn btn-primary btn py-3">Atualizar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col col-md-6 py-2">
+			<img src="/public/img/img2.png" class="pao py-3">
+
+		</div>
+	</div>
 
 <script src="/public/js/jquery-validate/jquery.validate.min.js"></script>
 <script src="/public/js/jquery-validate/additional-methods.min.js"></script>
@@ -39,13 +107,13 @@
 
 	$("#formCadastro").validate({
 		rules: {
-			nome: {
+			inputNome: {
 				required: true
 			},
-			email: {
+			inputCodigo: {
 				required: true
 			},
-			imagem: {
+			inputData: {
 				required: true
 			}
 		},
