@@ -2,7 +2,50 @@
 
 <p>Listagem de produtos (<%= produtos.length %> produtos no total)</p>
 
-<% for (let contador = 0; contador < produtos.length; contador++) { %>
+<div class="modal fade" tabindex="-1" id="modalAtualizar">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title">Atualizar Produto</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+			<form>
+				<div class="form-group">
+					<label for="inputNome">Atualizar Nome</label>
+					<input type="text" class="form-control" id="inputNomeModal" placeholder="Digite seu nome">
+				  </div>
+				  <div class="form-group">
+					<label for="inputEmail">Atualizar Valor</label>
+					<input type="number" class="form-control" id="inputValor" placeholder="Digite seu valor">
+				</div>
+			</form>
+		
+		<div class="modal-footer">
+			<button type="button" class="btn btn-danger" data-dismiss="modal">
+				<i class="bi bi-x-lg"></i>
+				Cancelar
+			</button>
+			<button type="button" class="btn btn-primary" onclick="editarProduto()">
+				Salvar
+				<i class="bi bi-save"></i>
+			</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
+
+<div class="container-fluid pt-3">
+	<div id="divPessoas">
+
+	</div>
+</div>
+
+
+<!--<% for (let contador = 0; contador < produtos.length; contador++) { %>
 
 	<h2>
 		<%= produtos[contador].nome %>
@@ -18,4 +61,100 @@
 
 	<hr />
 
-<% } %>
+<% } %> -->
+
+<script>
+
+	function abrirModalAtualizar() {
+		document.getElementById("inputNomeModal").value = ""
+		document.getElementById("inputValor").value = ""
+		$("#modalAtualizar").modal("show")
+	
+	}
+	async function exibe() {
+
+		let produtoA = {
+			id: 1,
+			nome: "Produto A",
+			valor: 25,
+			imagem: ""
+		};
+
+		let produtoB = {
+			id: 2,
+			nome: "Produto B",
+			valor: 15,
+			imagem: ""
+		};
+
+		let produtoC = {
+			id: 3,
+			nome: "Produto C",
+			valor: 100,
+			imagem: ""
+		};
+
+		let produtoD = {
+			id: 4,
+			nome: "Produto D",
+			valor: 150,
+			imagem: ""
+		};
+
+		let produtosVindosDoBanco = [ produtoA, produtoB, produtoC, produtoD ];
+		let html = ""
+		
+		let cores = ["", "bg-secondary", "bg-success", "bg-danger", "bg-warning", "bg-info", "bg-light", "bg-dark"]
+
+		let cores_texto = ["text-white", "text-white", "text-white", "text-white", "text-white", "text-white", "", "text-white"]
+
+		for (let i = 0; i < produtosVindosDoBanco.length; i++) {
+			let pessoa = produtosVindosDoBanco[i];
+			// cria uma linha 
+			if (i % 2 === 0) {
+				html += '<div class="row">'
+			}
+				
+
+			let cor = cores[i % cores.length]
+			let texto = cores_texto[i % cores_texto.length]
+
+			html += `
+			<div class="col-md-6">
+				<div class="card ${texto} mb-3" style="background-image: url(/public/img/arvore.png);
+				background-size: cover;">				
+					<div class="card-header">${pessoa.id}</div>
+					<div class="card-body fundo-dark">
+						<h5 class="card-title">${pessoa.nome}</h5>
+						<p class="card-text">${pessoa.valor}</p>
+						<hr>
+						<p class="botao-editar">
+							<button type "button" class="btn btn-outline-secondary btn py-1" onclick="abrirModalAtualizar()">
+								<i class="bi bi-pencil-square"></i>
+							</button>
+						</p>
+					</div>
+				</div>
+			</div>
+			`
+		// caso ja tenha 2 col na linha fecha a div
+		if (i % 3 === 1 || i === produtosVindosDoBanco.length - 1) {
+			html += '</div>'
+		 }
+		}
+
+		let div = document.getElementById("divPessoas")
+		div.innerHTML = html
+	}
+
+	async function editarProduto() {
+		Swal.fire(
+					'Cadastro',
+					'Alteração criada com sucesso',
+					'success'
+					)
+                    $("#modalAtualizar").modal("hide")
+				}
+
+	exibe()
+</script>

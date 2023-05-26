@@ -1,28 +1,31 @@
 ﻿<!--<img src="/public/img/logo-semfundo.png" class="pao" width="200px" height ="200px">-->
 
-
-<section id="presentationSection">
+<div class="presentationSection">
 	<div class="container-fluid">
 	  <div class="row">
-		<div class="col-md-6 py-2">
-		  <h2>Bem-vindo à Paio Pão!</h2>
-		  <p>Sua padaria com produtos deliciosos e fresquinhos.</p>
-		  <p>Na Paio Pão, nós nos orgulhamos em oferecer uma variedade de pães artesanais feitos com ingredientes de alta qualidade e um toque especial de amor. Nosso compromisso é proporcionar aos nossos clientes uma experiência única e saborosa.</p>
-		  <p>Além dos pães tradicionais, temos uma seleção de bolos, salgados e doces que vão encantar o seu paladar. Venha nos visitar e saborear as delícias da Paio Pão.</p>
-		  <a href="/cadastro" class="btn btn-primary">Cadastre seus produtos</a>
+		<div class="col-md-6 py-5">
+			<div class="bg">
+				<h2>Bem-vindo à <span>Paio Pão</span> !</h2>
+				<p>Sua padaria com produtos deliciosos e fresquinhos.</p>
+				<p class="texto">Na Paio Pão, nós nos orgulhamos em oferecer uma variedade de pães artesanais feitos com ingredientes de alta qualidade e um toque especial de amor. Nosso compromisso é proporcionar aos nossos clientes uma experiência única e saborosa.</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, accusantium neque! Sint possimus totam ipsum nulla accusamus dolorem ducimus hic beatae maiores quos cum ea et provident, eveniet, commodi blanditiis!</p>
+				<hr class="linha mb-4">
+				<a href="/cadastro" class="btn btn-light"><i class="bi bi-pass-fill"></i>Cadastre seus produtos</a>
+				
+			</div>
 		</div>
 		<div class="col-md-6 pb-3 d-flex align-items-center justify-content-center">
 		  <img src="/public/img/logo-semfundo.png" alt="Imagem de Apresentação" class="pao2" width="400px" height ="400px">
 		</div>
 	  </div>
 	</div>
-</section>
+</div>
 
   
 
 
-<section id="carouselSection">
-	<div id="productCarousel" class="carousel slide" data-ride="carousel">
+<div class="carouselSection">
+	<div id="productCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
 	  <ol class="carousel-indicators">
 		<li data-target="#productCarousel" data-slide-to="0" class="active"></li>
 		<li data-target="#productCarousel" data-slide-to="1"></li>
@@ -32,7 +35,7 @@
 	  <div class="carousel-inner">
 		<div class="carousel-item active" style="background-image: url('/public/img/img2.png')">
 		  <div class="carousel-caption">
-			<h3>Pãos</h3>
+			<h3>Pães</h3>
 			
 		  </div>
 		</div>
@@ -59,9 +62,9 @@
 		<span class="sr-only">Próximo</span>
 	  </a>
 	</div>
-  </section>
+</div>
 
-<div class="secaoRecomendacao">
+<div class="secaoRecomendacao py-3">
 	<div class="limitador-titulo py-3">
 		<h1>Depoimentos</h1>
 	</div>
@@ -72,38 +75,50 @@
 		  <div class="card-body">
 			<blockquote class="blockquote">
 			  <p class="mb-0">Os pães da Padaria Paio Pão são simplesmente incríveis! Sempre fresquinhos e com uma textura maravilhosa. Recomendo a todos!</p>
-			  <footer class="blockquote-footer">João</footer>
+			  <footer class="blockquote-footer text-right"><em>João P.</em></footer>
 			</blockquote>
 		  </div>
 		</div>
 	  </div>
   
 	  <div class="col-md-6">
-		<div class="card mb-3">
+		<div class="card shadow mb-5">
 		  <div class="card-body">
 			<blockquote class="blockquote">
 			  <p class="mb-0">Os bolos da Padaria Paio Pão são uma perdição! São saborosos e têm uma variedade incrível de sabores. Sempre encomendo para as festas da família.</p>
-			  <footer class="blockquote-footer">Maria</footer>
+			  <footer class="blockquote-footer text-right"><em>Maria</em></footer>
 			</blockquote>
 		  </div>
 		</div>
 	  </div>
   
 	  <div class="col-md-6">
-		<div class="card mb-3">
+		<div class="card shadow mb-5">
 		  <div class="card-body">
 			<blockquote class="blockquote">
 			  <p class="mb-0">Os salgados da Padaria Paio Pão são deliciosos! A massa é bem feita e os recheios são muito saborosos. Não resisto a um bom pastel!</p>
-			  <footer class="blockquote-footer">Carlos</footer>
+			  <footer class="blockquote-footer text-right"><em>Carlos</em></footer>
 			</blockquote>
 		  </div>
 		</div>
 	  </div>
+
+	  <div class="col-md-6">
+		<div class="card shadow mb-5">
+		  <div class="card-body">
+			<blockquote class="blockquote">
+			  <p class="mb-0">Os salgados da Padaria Paio Pão são deliciosos! A massa é bem feita e os recheios são muito saborosos. Não resisto a um bom pastel!</p>
+			  <footer class="blockquote-footer text-right"><em>Gabriel</em></footer>
+			</blockquote>
+		  </div>
+		</div>
+	  </div>
+
 	</div>
   </div>
 </div>
   
-<p>Oi, <%= usuario %>! 😅</p>
+<!--<p>Oi, <%= usuario %>! 😅</p>
 
 <% for (let contador = 0; contador < quantidadeDeRepeticoes; contador++) { %>
 
@@ -115,6 +130,6 @@
 
 <%- include("exemplo-include") %>
 
-<p>Tchau, <%= usuario %>!</p>
+<p>Tchau, <%= usuario %>!</p>-->
 
 

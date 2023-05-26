@@ -1,12 +1,27 @@
 
 body {
     color:black;
+    font-family: "Open Sans";
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Montserrat Alternates';   
+}
+
+span {
+    color: #e9c174;
+    font-weight: bold;
+    font-style: italic;
+}
+
+h5 {
+    font-weight: bold;
 }
 
 .pao {
     max-width: 100%;
-    width:300px; 
-    height:300px;
+    width:500px; 
+    height:500px;
 }
 
 .logo {
@@ -22,6 +37,36 @@ body {
 
 }
 
+.presentationSection {
+    background-image: url(/public/img/fundo1.jpg);
+    background-position: center;
+    background-size: cover;
+    padding: 2rem 0rem 2rem 0rem;
+}
+
+.bg {
+    background-color: rgba(0,0,0,0.7);
+    padding: 20px;
+    color: white;
+    box-shadow: 0 0 20px #000;
+
+}
+
+.texto{
+    padding-bottom: 5rem;
+}
+
+/*.linha {
+    border-color:white;
+}
+*/
+
+.carouselSection {
+
+    padding: 2rem 0rem 2rem 0rem;
+
+
+}
 .carousel-item {
   height: 400px;
   background-size: cover;
@@ -46,3 +91,25 @@ h1 {
 
 }
 
+.secaoRecomendacao {
+    background-color: #f7f7f7;
+}
+
+.gradiente {
+    background: linear-gradient(135deg, #0d0d0e, #e9c174);
+}
+
+.fundo-dark {
+    background-color: rgba(0,0,0,0.5);
+
+}
+.botao-editar {
+    padding-top: 7rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+.icone {
+    font-size: 2rem;
+}

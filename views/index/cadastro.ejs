@@ -20,6 +20,36 @@
 	</button>
 </form> -->
 
+<div class="modal fade" tabindex="-1" id="modalAtualizar">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title">Atualizar Produto</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+			<form>
+				<div class="form-group">
+					<label for="inputNome">Atualizar Nome</label>
+					<input type="text" class="form-control" id="inputNomeModal" placeholder="Digite seu nome">
+				  </div>
+				  <div class="form-group">
+					<label for="inputEmail">Atualizar Email</label>
+					<input type="email" class="form-control" id="inputEmail" placeholder="Digite seu email">
+				</div>
+			</form>
+		
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+			<button type="button" class="btn btn-primary">Salvar</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
+
 <div class="container-fluid pt-3 my-md-5">
 	<div class="row">
 		<div class="col-md-6 py-2">
@@ -57,7 +87,7 @@
 							  <input type="text" class="form-control" id="inputMarca">
 							</div>
 							<div class="form-group col-md-4">
-							  <label for="inputCategoria">Categoria do Produto</label>
+							  <label for="inputCategoria">Categoria</label>
 							  <select id="inputCategoria" class="form-control">
 								<option selected>Escolha</option>
 								<option>1</option>
@@ -73,20 +103,18 @@
 							<label for="imagem">Imagem Produto</label>
 							<input class="form-control" type="file" id="imagem" name="imagem" accept="image/*" />
 						</div>
-						  <div class="separar pb-2">
-
-							</style>
-						  </div>
+						  <div class="separar pb-2"></div>
 						  <hr class="mb-4">
-						  <button type="submit" class="btn btn-success btn py-3">Cadastrar</button>
-						  <button type="submit" class="btn btn-danger btn py-3">Deletar</button>
-						  <button type="submit" class="btn btn-primary btn py-3">Atualizar</button>
+						  <button type="button" class="btn btn-success btn-block gradiente py-3" onclick="abrirAlertCadastar()">Cadastrar</button>
+						  <!--<button type="button" class="btn btn-primary btn py-3" onclick="abrirModalAtualizar()">Atualizar</button>-->
+
+						  
 					</form>
 				</div>
 			</div>
 		</div>
-		<div class="col col-md-6 py-2">
-			<img src="/public/img/img2.png" class="pao py-3">
+		<div class="col-md-6 py-2">
+			<img src="/public/img/img2.png" class="pao py-3 px-2 mx-4">
 
 		</div>
 	</div>
@@ -96,7 +124,36 @@
 <script src="/public/js/jquery-validate/localization/messages_pt_BR.min.js"></script>
 
 <script>
-	async function cadastrar(form) {
+	function abrirModalAtualizar() {
+            document.getElementById("inputNomeModal").value = ""
+			document.getElementById("inputEmail").value = ""
+            $("#modalAtualizar").modal("show")
+
+        }
+
+	async function abrirAlertCadastar() {
+
+		let nome = document.getElementById("inputNome").value
+		if (nome === '') {
+			Swal.fire(
+				'Erro no cadastro',
+				'Por favor preencha todos os campos',
+				'error'
+				)
+				
+		}
+		else {
+			Swal.fire(
+				'Cadastro',
+				'Cadastro criado com sucesso',
+				'success'
+				)
+
+		}
+
+	}
+
+	/*async function cadastrar(form) {
 		let response = await fetch("/api/cadastrar", {
 			method: "post",
 			body: new FormData(form)
@@ -120,5 +177,5 @@
 		submitHandler: function (form) {
 			cadastrar(form);
 		}
-	});
+	});*/
 </script>
