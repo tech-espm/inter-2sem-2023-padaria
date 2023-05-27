@@ -4,6 +4,10 @@ body {
     font-family: "Open Sans";
 }
 
+img {
+    max-width: 100%;
+}
+
 h1, h2, h3, h4, h5 {
     font-family: 'Montserrat Alternates';   
 }
@@ -120,10 +124,10 @@ h1 {
 /* secao sobre */ 
 
 .margemGorda{
-    margin: 50px;
+    margin: 50px 0px;
 }
 .margemMagra{
-    margin: 20px;
+    margin: 20px 0px;
 }
 .fundoEscuro{
     background-color: black;
