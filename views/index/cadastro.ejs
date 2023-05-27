@@ -30,7 +30,7 @@
 							  <label for="marca">Marca do produto</label>
 							  <input type="text" class="form-control" id="marca" name="marca">
 							</div>
-							<div class="form-group col-md-2">
+							<div class="form-group col-md-4">
 							  <label for="ean">EAN</label>
 							  <input type="text" class="form-control" id="ean" name="ean">
 							</div>
@@ -64,7 +64,15 @@
 			body: new FormData(form)
 		});
 
-		console.log(response.ok);
+		if (response.ok) {
+			Swal.fire(
+				'Cadastro',
+				'Produto criada com sucesso',
+				'success'
+				);
+		} else {
+
+		}
 	}
 
 	$("#formCadastro").validate({
@@ -94,5 +102,7 @@
 		submitHandler: function (form) {
 			criar(form);
 		}
-	});
+		
+	})
+
 </script>

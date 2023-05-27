@@ -22,6 +22,7 @@ class Produto {
                 p.marca, p.ean
                 FROM produto p
                 INNER JOIN tipo t ON t.idtipo = p.idtipo
+                order by p.nome ASC
             `);
         });
 
@@ -38,6 +39,27 @@ class Produto {
         }
 
         // @@@
+
+        if (!produto.codigo) {
+            return "Codigo Invalido inválido";
+        }
+        if (!produto.inclusao) {
+            return "Data inválida";
+        }
+
+        
+        if (!produto.idtipo) {
+            return "Tipo inválida";
+        }
+
+        if (!produto.marca) {
+            return "Marca inválida";
+        }
+
+        
+        if (!produto.ean) {
+            return "Marca inválida";
+        }
 
         await app.sql.connect(async (sql: app.Sql) => {
             await sql.beginTransaction();
@@ -64,6 +86,7 @@ class Produto {
         }
 
         // @@@
+        
 
         await app.sql.connect(async (sql: app.Sql) => {
             // @@@

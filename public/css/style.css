@@ -111,10 +111,14 @@ h1 {
 
 }
 .botao-editar {
-    padding-top: 7rem;
+    padding-top: 0.5rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
 
+}
+
+hr {
+    border-color: white;
 }
 
 .icone {
@@ -158,4 +162,21 @@ img{
     max-width: 100%;
     border-radius: 5px;
 
+}
+
+/* seção historia */
+
+.historia-img {
+    width: 550px;
+    height: 550px;
+
+}
+
+.fundo {
+    background-color: #e9c174;
+}
+
+.img-cartao {
+    width: 350px;
+    height: 350px;
 }
