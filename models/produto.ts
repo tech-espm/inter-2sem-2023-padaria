@@ -37,6 +37,8 @@ class Produto {
             return "Nome do produto inválido";
         }
 
+        // @@@
+
         await app.sql.connect(async (sql: app.Sql) => {
             await sql.beginTransaction();
 
@@ -47,6 +49,24 @@ class Produto {
             app.fileSystem.saveUploadedFile("/public/img/produtos/" + produto.idproduto + ".jpg", imagem);
 
             await sql.commit();
+        });
+
+        return null;
+    }
+
+    public static async editar(produto: Produto): Promise<string> {
+        if (!produto) {
+            return "Produto inválido";
+        }
+
+        if (!produto.nome) {
+            return "Nome do produto inválido";
+        }
+
+        // @@@
+
+        await app.sql.connect(async (sql: app.Sql) => {
+            // @@@
         });
 
         return null;

@@ -13,6 +13,18 @@ class ProdutoApiRoute {
 
 		res.json(resultado);
     }
+
+    @app.http.post()
+    @app.route.formData()
+    public async editar(req: app.Request, res: app.Response) {
+		let resultado = await Produto.editar(req.body);
+
+		if (resultado) {
+			res.status(400);
+		}
+
+		res.json(resultado);
+    }
 }
 
 export = ProdutoApiRoute;
