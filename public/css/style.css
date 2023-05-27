@@ -99,6 +99,9 @@ h1 {
     background: linear-gradient(135deg, #0d0d0e, #e9c174);
 }
 
+.img-centro {
+    text-align: center;
+}
 .fundo-dark {
     background-color: rgba(0,0,0,0.5);
 
@@ -112,4 +115,43 @@ h1 {
 
 .icone {
     font-size: 2rem;
+}
+
+/* secao sobre */ 
+
+.margemGorda{
+    margin: 50px;
+}
+.margemMagra{
+    margin: 20px;
+}
+.fundoEscuro{
+    background-color: black;
+    color: white;
+}
+.imagensEfeito{
+    stroke: orange;
+    stroke-width: 100px;
+}
+.textoCentral{
+    text-align: center;
+    text-orientation: mixed;
+}
+
+.c1{
+    background-color: #E9C174;
+    color: black;
+    padding: 40px;
+}
+.c2{
+    background-color: black;
+    color: #E9C174;
+}
+.cor1{
+    color: #E9C300;
+}
+img{
+    max-width: 100%;
+    border-radius: 5px;
+
 }
