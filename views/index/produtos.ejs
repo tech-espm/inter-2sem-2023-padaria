@@ -39,122 +39,52 @@
 </div>
 
 <div class="container-fluid pt-3">
-	<div id="divPessoas">
+	<div class="row">
+	<%
+	for (let i = 0; i < produtos.length; i++) {
+	%>
+
+	<div class="col-md-6">
+		<div class="card text-white mb-3" style="
+			background-image: url('/public/img/produtos/<%= produtos[i].idproduto %>.jpg');
+			background-size: cover;
+		">
+			<div class="card-body fundo-dark">
+				<h5 class="card-title"><%= produtos[i].nome %></h5>
+				<p class="card-text"><%= produtos[i].tipo %></p>
+				<hr>
+				<p class="botao-editar">
+					<button type "button" class="btn btn-outline-secondary btn py-1" onclick="abrirModalAtualizar('<%= produtos[i].idproduto %>')">
+						<i class="bi bi-pencil-square"></i>
+					</button>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<%
+	}
+	%>
 
 	</div>
 </div>
 
-
-<!--<% for (let contador = 0; contador < produtos.length; contador++) { %>
-
-	<h2>
-		<%= produtos[contador].nome %>
-	</h2>
-
-	<p>
-		Id: <%= produtos[contador].id %>
-	</p>
-
-	<p>
-		Valor: R$ <%= produtos[contador].valor %>
-	</p>
-
-	<hr />
-
-<% } %> -->
-
 <script>
 
-	function abrirModalAtualizar() {
+	function abrirModalAtualizar(id) {
 		document.getElementById("inputNomeModal").value = ""
 		document.getElementById("inputValor").value = ""
 		$("#modalAtualizar").modal("show")
 	
 	}
-	async function exibe() {
-
-		let produtoA = {
-			id: 1,
-			nome: "Produto A",
-			valor: 25,
-			imagem: ""
-		};
-
-		let produtoB = {
-			id: 2,
-			nome: "Produto B",
-			valor: 15,
-			imagem: ""
-		};
-
-		let produtoC = {
-			id: 3,
-			nome: "Produto C",
-			valor: 100,
-			imagem: ""
-		};
-
-		let produtoD = {
-			id: 4,
-			nome: "Produto D",
-			valor: 150,
-			imagem: ""
-		};
-
-		let produtosVindosDoBanco = [ produtoA, produtoB, produtoC, produtoD ];
-		let html = ""
-		
-		let cores = ["", "bg-secondary", "bg-success", "bg-danger", "bg-warning", "bg-info", "bg-light", "bg-dark"]
-
-		let cores_texto = ["text-white", "text-white", "text-white", "text-white", "text-white", "text-white", "", "text-white"]
-
-		for (let i = 0; i < produtosVindosDoBanco.length; i++) {
-			let pessoa = produtosVindosDoBanco[i];
-			// cria uma linha 
-			if (i % 2 === 0) {
-				html += '<div class="row">'
-			}
-				
-
-			let cor = cores[i % cores.length]
-			let texto = cores_texto[i % cores_texto.length]
-
-			html += `
-			<div class="col-md-6">
-				<div class="card ${texto} mb-3" style="background-image: url(/public/img/arvore.png);
-				background-size: cover;">				
-					<div class="card-header">${pessoa.id}</div>
-					<div class="card-body fundo-dark">
-						<h5 class="card-title">${pessoa.nome}</h5>
-						<p class="card-text">${pessoa.valor}</p>
-						<hr>
-						<p class="botao-editar">
-							<button type "button" class="btn btn-outline-secondary btn py-1" onclick="abrirModalAtualizar()">
-								<i class="bi bi-pencil-square"></i>
-							</button>
-						</p>
-					</div>
-				</div>
-			</div>
-			`
-		// caso ja tenha 2 col na linha fecha a div
-		if (i % 3 === 1 || i === produtosVindosDoBanco.length - 1) {
-			html += '</div>'
-		 }
-		}
-
-		let div = document.getElementById("divPessoas")
-		div.innerHTML = html
-	}
 
 	async function editarProduto() {
-		Swal.fire(
-					'Cadastro',
-					'Alteração criada com sucesso',
-					'success'
-					)
-                    $("#modalAtualizar").modal("hide")
-				}
+		await Swal.fire(
+			'Cadastro',
+			'Alteração criada com sucesso',
+			'success'
+		);
+		window.location.reload();
+	}
 
-	exibe()
 </script>

@@ -1,55 +1,3 @@
-
-<!--<form id="formCadastro">
-	<div class="form-group">
-		<label for="nome">Nome</label>
-		<input class="form-control" type="text" id="nome" name="nome" maxlength="100" />
-	</div>
-
-	<div class="form-group">
-		<label for="email">E-mail</label>
-		<input class="form-control" type="email" id="email" name="email" maxlength="100" />
-	</div>
-
-	<div class="form-group">
-		<label for="imagem">Imagem</label>
-		<input class="form-control" type="file" id="imagem" name="imagem" accept="image/*" />
-	</div>
-
-	<button class="btn btn-primary" type="submit">
-		Cadastrar
-	</button>
-</form> -->
-
-<div class="modal fade" tabindex="-1" id="modalAtualizar">
-	<div class="modal-dialog">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <h5 class="modal-title">Atualizar Produto</h5>
-		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		  </button>
-		</div>
-		<div class="modal-body">
-			<form>
-				<div class="form-group">
-					<label for="inputNome">Atualizar Nome</label>
-					<input type="text" class="form-control" id="inputNomeModal" placeholder="Digite seu nome">
-				  </div>
-				  <div class="form-group">
-					<label for="inputEmail">Atualizar Email</label>
-					<input type="email" class="form-control" id="inputEmail" placeholder="Digite seu email">
-				</div>
-			</form>
-		
-		<div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-			<button type="button" class="btn btn-primary">Salvar</button>
-		</div>
-	  </div>
-	</div>
-  </div>
-</div>
-
 <div class="container-fluid pt-3 my-md-5">
 	<div class="row">
 		<div class="col-md-6 py-2">
@@ -59,44 +7,32 @@
 					<form id="formCadastro">
 						<div class="form-row">
 							<div class="form-group col-md-6">
-							  <label for="inputNome">Nome Produto</label>
-							  <input type="email" class="form-control" id="inputNome">
+							  <label for="nome">Nome Produto</label>
+							  <input type="text" class="form-control" id="nome" name="nome">
 							</div>
 							<div class="form-group col-md-6">
-							  <label for="inputCodigo">Código Produto</label>
-							  <input type="password" class="form-control" id="inputCodigo">
+							  <label for="codigo">Código Produto</label>
+							  <input type="text" class="form-control" id="codigo" name="codigo">
 							</div>
 						  </div>
 						  <div class="form-row">
 							<div class="form-group col-md-6">
-								<label for="inputData">Data Inclusão</label>
-								<input type="date" class="form-control" id="inputDate" placeholder="Data">
+								<label for="inclusao">Data Inclusão</label>
+								<input type="date" class="form-control" id="inclusao" name="inclusao">
 							</div>
-							<div class="form-group col-md-6">
-								<label for="inputEndereco">Endereço Origem</label>
-								<input type="text" class="form-control" id="inputEndereco" placeholder="Rua Exemplo Nº 1">
-							  </div>
 						  </div>
 						  <div class="form-group">
-							<label for="inputTipoProd">Tipo de produto</label>
-							<input type="text" class="form-control" id="inputTipoProd" placeholder=" Salgados / Doces / Frios ">
+							<label for="idtipo">Tipo de produto</label>
+							<input type="number" class="form-control" id="idtipo" name="idtipo">
 						  </div>
 						  <div class="form-row">
 							<div class="form-group col-md-6">
-							  <label for="inputMarca">Marca do produto</label>
-							  <input type="text" class="form-control" id="inputMarca">
-							</div>
-							<div class="form-group col-md-4">
-							  <label for="inputCategoria">Categoria</label>
-							  <select id="inputCategoria" class="form-control">
-								<option selected>Escolha</option>
-								<option>1</option>
-								<option>2</option>
-							  </select>
+							  <label for="marca">Marca do produto</label>
+							  <input type="text" class="form-control" id="marca" name="marca">
 							</div>
 							<div class="form-group col-md-2">
-							  <label for="inputEAN">EAN</label>
-							  <input type="text" class="form-control" id="inputEAN">
+							  <label for="ean">EAN</label>
+							  <input type="text" class="form-control" id="ean" name="ean">
 							</div>
 						  </div>
 						  <div class="form-group">
@@ -105,10 +41,8 @@
 						</div>
 						  <div class="separar pb-2"></div>
 						  <hr class="mb-4">
-						  <button type="button" class="btn btn-success btn-block gradiente py-3" onclick="abrirAlertCadastar()">Cadastrar</button>
+						  <button type="submit" class="btn btn-success btn-block gradiente py-3">Cadastrar</button>
 						  <!--<button type="button" class="btn btn-primary btn py-3" onclick="abrirModalAtualizar()">Atualizar</button>-->
-
-						  
 					</form>
 				</div>
 			</div>
@@ -124,37 +58,8 @@
 <script src="/public/js/jquery-validate/localization/messages_pt_BR.min.js"></script>
 
 <script>
-	function abrirModalAtualizar() {
-            document.getElementById("inputNomeModal").value = ""
-			document.getElementById("inputEmail").value = ""
-            $("#modalAtualizar").modal("show")
-
-        }
-
-	async function abrirAlertCadastar() {
-
-		let nome = document.getElementById("inputNome").value
-		if (nome === '') {
-			Swal.fire(
-				'Erro no cadastro',
-				'Por favor preencha todos os campos',
-				'error'
-				)
-				
-		}
-		else {
-			Swal.fire(
-				'Cadastro',
-				'Cadastro criado com sucesso',
-				'success'
-				)
-
-		}
-
-	}
-
-	/*async function cadastrar(form) {
-		let response = await fetch("/api/cadastrar", {
+	async function criar(form) {
+		let response = await fetch("/api/produto/criar", {
 			method: "post",
 			body: new FormData(form)
 		});
@@ -164,18 +69,30 @@
 
 	$("#formCadastro").validate({
 		rules: {
-			inputNome: {
+			nome: {
 				required: true
 			},
-			inputCodigo: {
+			codigo: {
 				required: true
 			},
-			inputData: {
+			inclusao: {
+				required: true
+			},
+			idtipo: {
+				required: true
+			},
+			marca: {
+				required: true
+			},
+			ean: {
+				required: true
+			},
+			imagem: {
 				required: true
 			}
 		},
 		submitHandler: function (form) {
-			cadastrar(form);
+			criar(form);
 		}
-	});*/
+	});
 </script>

@@ -1,13 +1,18 @@
 import app = require("teem");
+import Produto = require("../../models/produto");
 
-class ProdutoRoute {
+class ProdutoApiRoute {
     @app.http.post()
     @app.route.formData()
     public async criar(req: app.Request, res: app.Response) {
-        let produto = req.body;
+		let resultado = await Produto.criar(req.body, req.uploadedFiles["imagem"]);
 
-        res.json("show")
+		if (resultado) {
+			res.status(400);
+		}
+
+		res.json(resultado);
     }
 }
 
-export = ProdutoRoute;
+export = ProdutoApiRoute;

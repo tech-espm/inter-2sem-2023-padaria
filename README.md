@@ -18,6 +18,21 @@
 
 Descrição do projeto, incluindo o problema original, e o objetivo final. Pode ser em mais de um parágrafo.
 
+# Detalhes de Configuração
+
+Para funcionar corretamente, devem ser criados os seguintes arquivos/pastas nos caminhos especificados, com o conteúdo especificado:
+
+- O arquivo `.env` deve ser criado em `/`, com o conteúdo abaixo:
+```
+mysqlhost=localhost
+mysqlport=3306
+mysqluser=[USUÁRIO DO BANCO]
+mysqlpassword=[SENHA DO USUÁRIO DO BANCO]
+mysqldatabase=[NOME DO BANCO]
+```
+
+- A pasta `produtos` deve ser criada em `/public/img`
+
 # Licença
 
 Este projeto é licenciado sob a [MIT License](https://github.com/tech-espm/inter-2sem-2023-padaria/blob/main/LICENSE).

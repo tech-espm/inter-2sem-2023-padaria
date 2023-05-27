@@ -1,2 +1,4 @@
+dados/
 node_modules/
 src/
+.env
