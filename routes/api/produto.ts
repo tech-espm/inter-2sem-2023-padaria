@@ -25,6 +25,17 @@ class ProdutoApiRoute {
 
 		res.json(resultado);
     }
+	@app.http.post()
+    @app.route.formData()
+    public async excluir(req: app.Request, res: app.Response) {
+		let resultado = await Produto.excluir(req.body);
+
+		if (resultado) {
+			res.status(400);
+		}
+
+		res.json(resultado);
+    }
 }
 
 export = ProdutoApiRoute;

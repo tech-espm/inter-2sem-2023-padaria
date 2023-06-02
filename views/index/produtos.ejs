@@ -18,8 +18,8 @@
 					<input type="text" class="form-control" id="inputNomeModal" placeholder="Digite seu nome">
 				  </div>
 				  <div class="form-group">
-					<label for="inputEmail">Atualizar Valor</label>
-					<input type="number" class="form-control" id="inputValor" placeholder="Digite seu valor">
+					<label for="inputEmail">Atualizar EAN</label>
+					<input type="text" class="form-control" id="inputEANModal" placeholder="Digite EAN">
 				</div>
 			</form>
 		
@@ -42,17 +42,18 @@
 	<div class="modal-dialog">
 	  <div class="modal-content">
 		<div class="modal-header">
-		  <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+		  <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Produto</h1>
 		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
 		  </button>
 		</div>
 		<div class="modal-body">
-		  ...
+		  Certeza que quer remover este produto?
+		  Está ação é irreversível, será preciso refazer o cadastro do mesmo!!!
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-primary">Understood</button>
+		  <button type="button" class="btn btn-primary" onclick="editar()">Understood</button>
 		</div>
 	  </div>
 	</div>
@@ -101,22 +102,29 @@
 
 	function abrirModalAtualizar(id) {
 		document.getElementById("inputNomeModal").value = ""
-		document.getElementById("inputValor").value = ""
+		document.getElementById("inputEANModal").value = ""
 		$("#modalAtualizar").modal("show")
 	
 	}
 	function abrirModalExcluir(id) {
-		document.getElementById("inputNomeModal").value = ""
-		document.getElementById("inputValor").value = ""
 		$("#modalExcluir").modal("show")
 	
 	}
 	
-	async function editarProduto() {
+	async function editar() {
 		await Swal.fire(
 			'Cadastro',
-			'Alteração criada com sucesso',
+			'Alteração feita com sucesso',
 			'success'
+		);
+		window.location.reload();
+	}
+
+	async function excluir() {
+		await Swal.fire(
+			'Exclusão',
+			'Exclusão feita',
+			'warning'
 		);
 		window.location.reload();
 	}

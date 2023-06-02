@@ -64,7 +64,8 @@ class Produto {
         await app.sql.connect(async (sql: app.Sql) => {
             await sql.beginTransaction();
 
-            await sql.query("INSERT INTO produto (nome, codigo, inclusao, idtipo, marca, ean) VALUES (?, ?, ?, ?, ?, ?)", [produto.nome, produto.codigo, produto.inclusao, produto.idtipo, produto.marca, produto.ean]);
+            await sql.query("INSERT INTO produto (nome, codigo, inclusao, idtipo, marca, ean) VALUES (?, ?, ?, ?, ?, ?)", 
+                [produto.nome, produto.codigo, produto.inclusao, produto.idtipo, produto.marca, produto.ean]);
 
             produto.idproduto = await sql.scalar("SELECT last_insert_id()");
 
@@ -85,15 +86,44 @@ class Produto {
             return "Nome do produto inválido";
         }
 
+        if (!produto.ean) {
+            return "EAN inválido"
+        }
         // @@@
         
 
         await app.sql.connect(async (sql: app.Sql) => {
             // @@@
+            await sql.beginTransaction();
+
+            await sql.query("UPDATE produto SET nome = ?, ean = ? WHERE idproduto = ?",
+                [produto.nome,produto.ean, produto.idproduto]);
+    
+            await sql.commit();
         });
 
         return null;
     }
+
+    public static async excluir(idproduto: number): Promise<string> {
+        if (!idproduto) {
+            return "ID do produto inválido";
+        }
+    
+        await app.sql.connect(async (sql: app.Sql) => {
+            await sql.beginTransaction();
+    
+            await sql.query("DELETE FROM produto WHERE idproduto = ?", [idproduto]);
+    
+            await sql.commit();
+        });
+    
+        return null;
+    }
+    
+
+
+
 }
 
 export = Produto;

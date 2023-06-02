@@ -3,31 +3,11 @@ import Produto = require("../models/produto");
 
 class IndexRoute {
 	public async index(req: app.Request, res: app.Response) {
-		let nomeDoUsuarioQueVeioDoBanco = "Rafael";
-
 		let opcoes = {
-			usuario: nomeDoUsuarioQueVeioDoBanco,
-			quantidadeDeRepeticoes: 5,
 			titulo: "Paio Pão"
 		};
 
 		res.render("index/index", opcoes);
-	}
-
-	public async teste(req: app.Request, res: app.Response) {
-		let opcoes = {
-			layout: "casca-teste"
-		};
-
-		res.render("index/teste", opcoes);
-	}
-
-	public async teste2(req: app.Request, res: app.Response) {
-		let opcoes = {
-			layout: "casca-teste"
-		};
-
-		res.render("index/teste2", opcoes);
 	}
 
 	public async cadastro(req: app.Request, res: app.Response) {
@@ -55,7 +35,7 @@ class IndexRoute {
 		let produtosVindosDoBanco = await Produto.listar();
 
 		let opcoes = {
-			titulo: "Listagem de Produtos",
+			titulo: "Produtos",
 			produtos: produtosVindosDoBanco
 		};
 
