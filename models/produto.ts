@@ -106,23 +106,29 @@ class Produto {
     }
 
     public static async excluir(idproduto: number): Promise<string> {
-        if (!idproduto) {
-            return "ID do produto inválido";
-        }
-    
         await app.sql.connect(async (sql: app.Sql) => {
             await sql.beginTransaction();
     
             await sql.query("DELETE FROM produto WHERE idproduto = ?", [idproduto]);
-    
+
+            if (sql.affectedRows)
+                await app.fileSystem.deleteFile("/public/img/produtos/" + idproduto + ".jpg");
+
             await sql.commit();
         });
     
         return null;
     }
+
+    public static async obter(idproduto: number): Promise<Produto> {
+        let lista: Produto[];
     
-
-
+        await app.sql.connect(async (sql: app.Sql) => {
+            lista = await sql.query("SELECT idproduto, nome, codigo, inclusao, idtipo, marca, ean FROM produto WHERE idproduto = ?", [idproduto]);
+        });
+    
+        return lista[0];
+    }
 
 }
 

@@ -4,7 +4,7 @@
 
 <div class="modal fade" tabindex="-1" id="modalAtualizar">
 	<div class="modal-dialog">
-	  <div class="modal-content">
+	  <form class="modal-content" id="formAtualizar">
 		<div class="modal-header">
 		  <h5 class="modal-title">Atualizar Produto</h5>
 		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -12,28 +12,27 @@
 		  </button>
 		</div>
 		<div class="modal-body">
-			<form>
-				<div class="form-group">
-					<label for="inputNome">Atualizar Nome</label>
-					<input type="text" class="form-control" id="inputNomeModal" placeholder="Digite seu nome">
-				  </div>
-				  <div class="form-group">
-					<label for="inputEmail">Atualizar EAN</label>
-					<input type="text" class="form-control" id="inputEANModal" placeholder="Digite EAN">
-				</div>
-			</form>
-		
+			<input type="hidden" id="idproduto" name="idproduto" >
+			<div class="form-group">
+				<label for="nome">Atualizar Nome</label>
+				<input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome">
+			</div>
+			<div class="form-group">
+				<label for="ean">Atualizar EAN</label>
+				<input type="text" class="form-control" id="ean" name="ean" placeholder="Digite EAN">
+			</div>
+		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-danger" data-dismiss="modal">
 				<i class="bi bi-x-lg"></i>
 				Cancelar
 			</button>
-			<button type="button" class="btn btn-success" onclick="editarProduto()">
+			<button type="submit" class="btn btn-success">
 				Salvar
 				<i class="bi bi-save"></i>
 			</button>
 		</div>
-	  </div>
+	  </form>
 	</div>
   </div>
 </div>
@@ -98,11 +97,29 @@
 	</div>
 </div>
 
+<script src="/public/js/jquery-validate/jquery.validate.min.js"></script>
+<script src="/public/js/jquery-validate/additional-methods.min.js"></script>
+<script src="/public/js/jquery-validate/localization/messages_pt_BR.min.js"></script>
+
 <script>
 
-	function abrirModalAtualizar(id) {
-		document.getElementById("inputNomeModal").value = ""
-		document.getElementById("inputEANModal").value = ""
+	async function abrirModalAtualizar(id) {
+		let response = await fetch("/api/produto/obter?idproduto=" + id);
+
+		if (!response.ok) {
+			// @@@
+			return;
+		}
+
+		let produto = await response.json();
+		if (!produto) {
+			// @@@
+			return;
+		}
+
+		document.getElementById("idproduto").value = produto.idproduto;
+		document.getElementById("nome").value = produto.nome;
+		document.getElementById("ean").value = produto.ean;
 		$("#modalAtualizar").modal("show")
 	
 	}
@@ -110,15 +127,53 @@
 		$("#modalExcluir").modal("show")
 	
 	}
-	
-	async function editar() {
-		await Swal.fire(
-			'Cadastro',
-			'Alteração feita com sucesso',
-			'success'
-		);
-		window.location.reload();
+
+	async function editar(form) {
+		let response = await fetch("/api/produto/editar", {
+			method: "post",
+			body: new FormData(form)
+		});
+
+		if (response.ok) {
+			Swal.fire(
+				'Cadastro',
+				'Produto alterado com sucesso',
+				'success'
+				);
+		} else {
+
+		}
 	}
+
+	$("#formAtualizar").validate({
+		rules: {
+			nome: {
+				required: true
+			},
+			codigo: {
+				required: true
+			},
+			inclusao: {
+				required: true
+			},
+			idtipo: {
+				required: true
+			},
+			marca: {
+				required: true
+			},
+			ean: {
+				required: true
+			},
+			imagem: {
+				required: true
+			}
+		},
+		submitHandler: function (form) {
+			debugger;
+			editar(form);
+		}
+	})
 
 	async function excluir() {
 		await Swal.fire(

@@ -25,16 +25,20 @@ class ProdutoApiRoute {
 
 		res.json(resultado);
     }
-	@app.http.post()
-    @app.route.formData()
+
+	@app.http.delete()
     public async excluir(req: app.Request, res: app.Response) {
-		let resultado = await Produto.excluir(req.body);
+		let resultado = await Produto.excluir(parseInt(req.query["idproduto"] as string));
 
 		if (resultado) {
 			res.status(400);
 		}
 
 		res.json(resultado);
+    }
+
+    public async obter(req: app.Request, res: app.Response) {
+		res.json(await Produto.obter(parseInt(req.query["idproduto"] as string)));
     }
 }
 
