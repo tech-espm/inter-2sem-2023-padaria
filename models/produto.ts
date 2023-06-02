@@ -22,7 +22,7 @@ class Produto {
                 p.marca, p.ean
                 FROM produto p
                 INNER JOIN tipo t ON t.idtipo = p.idtipo
-                order by p.nome ASC
+                order by p.idproduto ASC
             `);
         });
 
@@ -49,7 +49,7 @@ class Produto {
 
         
         if (!produto.idtipo) {
-            return "Tipo inválida";
+            return "Tipo inválido";
         }
 
         if (!produto.marca) {
@@ -58,7 +58,7 @@ class Produto {
 
         
         if (!produto.ean) {
-            return "Marca inválida";
+            return "EAN inválida";
         }
 
         await app.sql.connect(async (sql: app.Sql) => {
