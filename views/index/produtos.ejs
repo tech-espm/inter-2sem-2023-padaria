@@ -3,231 +3,214 @@
 <p>Listagem de produtos (<%= produtos.length %> produtos no total)</p>
 
 <div class="modal fade" tabindex="-1" id="modalAtualizar">
-	<div class="modal-dialog">
-	  <form class="modal-content" id="formAtualizar">
-		<div class="modal-header">
-		  <h5 class="modal-title">Atualizar Produto</h5>
-		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		  </button>
-		</div>
-		<div class="modal-body">
-			<input type="hidden" id="idproduto" name="idproduto" >
-			<div class="form-group">
-				<label for="nome">Atualizar Nome</label>
-				<input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome">
-			</div>
-			<div class="form-group">
-				<label for="ean">Atualizar EAN</label>
-				<input type="text" class="form-control" id="ean" name="ean" placeholder="Digite EAN">
-			</div>
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-danger" data-dismiss="modal">
-				<i class="bi bi-x-lg"></i>
-				Cancelar
-			</button>
-			<button type="submit" class="btn btn-success">
-				Salvar
-				<i class="bi bi-save"></i>
-			</button>
-		</div>
-	  </form>
-	</div>
+  <div class="modal-dialog">
+    <form class="modal-content" id="formAtualizar">
+      <div class="modal-header">
+        <h5 class="modal-title">Atualizar Produto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="idproduto" name="idproduto">
+        <div class="form-group">
+          <label for="nome">Atualizar Nome</label>
+          <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome">
+        </div>
+        <div class="form-group">
+          <label for="ean">Atualizar EAN</label>
+          <input type="text" class="form-control" id="ean" name="ean" placeholder="Digite EAN">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">
+          <i class="bi bi-x-lg"></i>
+          Cancelar
+        </button>
+        <button type="submit" class="btn btn-success">
+          Salvar
+          <i class="bi bi-save"></i>
+        </button>
+      </div>
+    </form>
   </div>
 </div>
 
 <div class="modal fade" id="modalExcluir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalExcluirLabel" aria-hidden="true">
-	<div class="modal-dialog">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Produto</h1>
-		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		  </button>
-		</div>
-		<div class="modal-body">
-		  Certeza que quer remover este produto?
-		  Está ação é irreversível, será preciso refazer o cadastro do mesmo!!!
-		</div>
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-primary" onclick="excluir()">Understood</button>
-		</div>
-	  </div>
-	</div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Produto</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Certeza que quer remover este produto?
+        Esta ação é irreversível, será preciso refazer o cadastro do mesmo!!!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="excluir()">Understood</button>
+      </div>
+    </div>
   </div>
+</div>
 
 
 <div class="container-fluid pt-3">
-	<div id="divProdutos" class="row">
-	<%
-	for (let i = 0; i < produtos.length; i++) {
-	%>
-
-	<div class="col-md-6">
-		<div class="card text-white mb-3" style="
-			background-image: url('/public/img/produtos/<%= produtos[i].idproduto %>.jpg');
-			background-size: cover;
-			background-position: center;
-		">
-			<div class="card-body fundo-dark">
-				<h5 class="card-title" id="nome"><%= produtos[i].nome %></h5>
-				<p class="card-text"><%= produtos[i].codigo %></p>
-				<p class="card-text"><%= produtos[i].tipo %></p>
-				<p class="card-text"><%= produtos[i].inclusao %></p>
-				<p class="card-text"><%= produtos[i].marca %></p>
-				<p class="card-text" id="ean"><%= produtos[i].ean %></p>
-				<hr>
-				<p class="botao-editar">
-					<button type "button" class="btn btn-outline-light btn py-1" onclick="abrirModalAtualizar('<%= produtos[i].idproduto %>')">
-						<i class="bi bi-pencil-square"></i>
-					</button>
-					<button type="button" class="btn btn-outline-danger btn py-1" onclick="abrirModalExcluir('<%= produtos[i].idproduto %>')">
-						<i class="bi bi-x-square"></i>
-					</button>
-
-				</p>
-			</div>
-		</div>
-	</div>
-	</div>
+  <div id="divProdutos" class="row">
+    <% for (let i = 0; i < produtos.length; i++) { %>
+    <div class="col-md-6">
+      <div class="card text-white mb-3" style="
+        background-image: url('/public/img/produtos/<%= produtos[i].idproduto %>.jpg');
+        background-size: cover;
+        background-position: center;
+      ">
+        <div class="card-body fundo-dark">
+          <h5 class="card-title" id="nome"><%= produtos[i].nome %></h5>
+          <p class="card-text"><%= produtos[i].codigo %></p>
+          <p class="card-text"><%= produtos[i].tipo %></p>
+          <p class="card-text"><%= produtos[i].inclusao %></p>
+          <p class="card-text"><%= produtos[i].marca %></p>
+          <p class="card-text" id="ean"><%= produtos[i].ean %></p>
+          <hr>
+          <p class="botao-editar">
+            <button type="button" class="btn btn-outline-light btn py-1" onclick="abrirModalAtualizar('<%= produtos[i].idproduto %>')">
+              <i class="bi bi-pencil-square"></i>
+            </button>
+            <button type="button" class="btn btn-outline-danger btn py-1" onclick="abrirModalExcluir('<%= produtos[i].idproduto %>')">
+              <i class="bi bi-x-square"></i>
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
 </div>
-
-<%
-}
-%>
 
 <script src="/public/js/jquery-validate/jquery.validate.min.js"></script>
 <script src="/public/js/jquery-validate/additional-methods.min.js"></script>
 <script src="/public/js/jquery-validate/localization/messages_pt_BR.min.js"></script>
 
 <script>
+  async function abrirModalAtualizar(id) {
+    let response = await fetch("/api/produto/obter?idproduto=" + id);
 
-	async function abrirModalAtualizar(id) {
-		let response = await fetch("/api/produto/obter?idproduto=" + id);
+    if (!response.ok) {
+      // @@@
+      return;
+    }
 
-		if (!response.ok) {
-			// @@@
-			return;
-		}
+    let produto = await response.json();
+    if (!produto) {
+      // @@@
+      return;
+    }
 
-		let produto = await response.json();
-		if (!produto) {
-			// @@@
-			return;
-		}
+    document.getElementById("idproduto").value = produto.idproduto;
+    document.getElementById("nome").value = produto.nome;
+    document.getElementById("ean").value = produto.ean;
+    $("#modalAtualizar").modal("show")
+  }
 
-		document.getElementById("idproduto").value = produto.idproduto;
-		document.getElementById("nome").value = produto.nome;
-		document.getElementById("ean").value = produto.ean;
-		$("#modalAtualizar").modal("show")
-	
-	}
-	async function abrirModalExcluir(id) {
-		let response = await fetch("/api/produto/obter?idproduto=" + id);
+  async function abrirModalExcluir(id) {
+    let response = await fetch("/api/produto/obter?idproduto=" + id);
 
-		if (!response.ok) {
-			// @@@
-			return;
-		}
+    if (!response.ok) {
+      // @@@
+      return;
+    }
 
-		let produto = await response.json();
-		if (!produto) {
-			// @@@
-			return;
-		}
+    let produto = await response.json();
+    if (!produto) {
+      // @@@
+      return;
+    }
 
-		document.getElementById("idproduto").value = produto.idproduto
-		$("#modalExcluir").modal("show")
-	
-	}
+    document.getElementById("idproduto").value = produto.idproduto;
+    $("#modalExcluir").modal("show");
+  }
 
-	async function editar(form) {
-		let response = await fetch("/api/produto/editar", {
-			method: "post",
-			body: new FormData(form)
-		});
-
-		if (response.ok) {
-			Swal.fire(
-				'Cadastro',
-				'Produto alterado com sucesso',
-				'success'
-				);
-				await new Promise(resolve => setTimeout(resolve, 1000))
-				window.location.reload()
-				
-				let idProduto = document.getElementById("idproduto").value;
-				let novoNome = document.getElementById("nome").value;
-				let novoEan = document.getElementById("ean").value;
-
-				let elementoNome = document.getElementById("nome");
-				let elementoEan = document.getElementById("ean");
-
-				if (elementoNome && elementoEan) {
-				elementoNome.innerHTML = novoNome;
-				elementoEan.innerHTML = novoEan;
-				}
-
-				// Feche o modal de atualização
-				$("#modalAtualizar").modal("hide"); 
-				
-
-		} else {
-
-		}
-		
-	}
-	
-
-	$("#formAtualizar").validate({
-		rules: {
-			nome: {
-				required: true
-			},
-			codigo: {
-				required: true
-			},
-			inclusao: {
-				required: true
-			},
-			idtipo: {
-				required: true
-			},
-			marca: {
-				required: true
-			},
-			ean: {
-				required: true
-			},
-			imagem: {
-				required: true
-			}
-		},
-		submitHandler: function (form) {
-			editar(form);
-		
-		}
-	})
-
-	async function excluir() {
-    let idProduto = document.getElementById("idproduto").value
-    let response = await fetch("/api/produto/excluir?idproduto=" + idProduto, {
-        method: "DELETE"
+  async function editar(form) {
+    let response = await fetch("/api/produto/editar", {
+      method: "post",
+      body: new FormData(form)
     });
 
     if (response.ok) {
-        await Swal.fire(
-            'Exclusão',
-            'Exclusão feita',
-            'warning'
-        );
-        window.location.reload()
+      Swal.fire(
+        'Cadastro',
+        'Produto alterado com sucesso',
+        'success'
+      );
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      window.location.reload();
+
+      let idProduto = document.getElementById("idproduto").value;
+      let novoNome = document.getElementById("nome").value;
+      let novoEan = document.getElementById("ean").value;
+
+      let elementoNome = document.getElementById("nome");
+      let elementoEan = document.getElementById("ean");
+
+      if (elementoNome && elementoEan) {
+        elementoNome.innerHTML = novoNome;
+        elementoEan.innerHTML = novoEan;
+      }
+
+      // Feche o modal de atualização
+      $("#modalAtualizar").modal("hide");
     } else {
-        console.error("Erro ao excluir o produto.")
+      // @@@
     }
-}
+  }
 
+  $("#formAtualizar").validate({
+    rules: {
+      nome: {
+        required: true
+      },
+      codigo: {
+        required: true
+      },
+      inclusao: {
+        required: true
+      },
+      idtipo: {
+        required: true
+      },
+      marca: {
+        required: true
+      },
+      ean: {
+        required: true
+      },
+      imagem: {
+        required: true
+      }
+    },
+    submitHandler: function (form) {
+      editar(form);
+    }
+  });
 
+  async function excluir() {
+    let idProduto = document.getElementById("idproduto").value;
+    let response = await fetch("/api/produto/excluir?idproduto=" + idProduto, {
+      method: "DELETE"
+    });
+
+    if (response.ok) {
+      await Swal.fire(
+        'Exclusão',
+        'Exclusão feita',
+        'warning'
+      );
+      window.location.reload();
+    } else {
+      console.error("Erro ao excluir o produto.");
+    }
+  }
 </script>
