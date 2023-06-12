@@ -16,7 +16,7 @@
 
 ## Descrição do Projeto
 
-Descrição do projeto, incluindo o problema original, e o objetivo final. Pode ser em mais de um parágrafo.
+O projeto tem como objetivo desenvolver um sistema de cadastro de produtos para uma padaria, incluindo o controle dos produtos cadastrados. O sistema permitirá listar os produtos, além de possibilitar a edição e exclusão dos mesmos, caso necessário.
 
 # Detalhes de Configuração
 
