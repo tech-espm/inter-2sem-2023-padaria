@@ -52,7 +52,7 @@
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-primary" onclick="editar()">Understood</button>
+		  <button type="button" class="btn btn-primary" onclick="excluir()">Understood</button>
 		</div>
 	  </div>
 	</div>
@@ -60,7 +60,7 @@
 
 
 <div class="container-fluid pt-3">
-	<div class="row">
+	<div id="divProdutos" class="row">
 	<%
 	for (let i = 0; i < produtos.length; i++) {
 	%>
@@ -72,28 +72,25 @@
 			background-position: center;
 		">
 			<div class="card-body fundo-dark">
-				<h5 class="card-title"><%= produtos[i].nome %></h5>
+				<h5 class="card-title" id="nome"><%= produtos[i].nome %></h5>
+				<p class="card-text"><%= produtos[i].codigo %></p>
 				<p class="card-text"><%= produtos[i].tipo %></p>
 				<p class="card-text"><%= produtos[i].inclusao %></p>
 				<p class="card-text"><%= produtos[i].marca %></p>
-				<p class="card-text"><%= produtos[i].ean %></p>
+				<p class="card-text" id="ean"><%= produtos[i].ean %></p>
 				<hr>
 				<p class="botao-editar">
 					<button type "button" class="btn btn-outline-light btn py-1" onclick="abrirModalAtualizar('<%= produtos[i].idproduto %>')">
 						<i class="bi bi-pencil-square"></i>
 					</button>
-					<button type "button" class="btn btn-outline-danger btn py-1 " data-bs-toggle="modal" data-bs-target="#modalExcluir" onclick="abrirModalExcluir('<%= produtos[i].idproduto %>')">
+					<button type="button" class="btn btn-outline-danger btn py-1" onclick="abrirModalExcluir('<%= produtos[i].idproduto %>')">
 						<i class="bi bi-x-square"></i>
 					</button>
+
 				</p>
 			</div>
 		</div>
 	</div>
-
-	<%
-	}
-	%>
-
 	</div>
 </div>
 
@@ -123,7 +120,21 @@
 		$("#modalAtualizar").modal("show")
 	
 	}
-	function abrirModalExcluir(id) {
+	async function abrirModalExcluir(id) {
+		let response = await fetch("/api/produto/obter?idproduto=" + id);
+
+		if (!response.ok) {
+			// @@@
+			return;
+		}
+
+		let produto = await response.json();
+		if (!produto) {
+			// @@@
+			return;
+		}
+
+		document.getElementById("idproduto").value = produto.idproduto
 		$("#modalExcluir").modal("show")
 	
 	}
@@ -140,10 +151,31 @@
 				'Produto alterado com sucesso',
 				'success'
 				);
+				await new Promise(resolve => setTimeout(resolve, 1000))
+				window.location.reload()
+				
+				let idProduto = document.getElementById("idproduto").value;
+				let novoNome = document.getElementById("nome").value;
+				let novoEan = document.getElementById("ean").value;
+
+				let elementoNome = document.getElementById("nome");
+				let elementoEan = document.getElementById("ean");
+
+				if (elementoNome && elementoEan) {
+				elementoNome.innerHTML = novoNome;
+				elementoEan.innerHTML = novoEan;
+				}
+
+				// Feche o modal de atualização
+				$("#modalAtualizar").modal("hide"); 
+				
+
 		} else {
 
 		}
+		
 	}
+	
 
 	$("#formAtualizar").validate({
 		rules: {
@@ -170,18 +202,28 @@
 			}
 		},
 		submitHandler: function (form) {
-			debugger;
 			editar(form);
+		
 		}
 	})
 
 	async function excluir() {
-		await Swal.fire(
-			'Exclusão',
-			'Exclusão feita',
-			'warning'
-		);
-		window.location.reload();
-	}
+    let idProduto = document.getElementById("idproduto").value
+    let response = await fetch("/api/produto/excluir?idproduto=" + idProduto, {
+        method: "DELETE"
+    });
+
+    if (response.ok) {
+        await Swal.fire(
+            'Exclusão',
+            'Exclusão feita',
+            'warning'
+        );
+        window.location.reload()
+    } else {
+        console.error("Erro ao excluir o produto.")
+    }
+}
+
 
 </script>
