@@ -105,7 +105,7 @@ class Produto {
         await app.sql.connect(async (sql: app.Sql) => {
             await sql.beginTransaction();
 
-            await sql.query("UPDATE produto SET nome = ?, codigo = ? inclusao = ? idtipo = ? marca = ? ean = ? WHERE idproduto = ?",
+            await sql.query("UPDATE produto SET nome = ?, codigo = ?, inclusao = ?, idtipo = ?, marca = ?, ean = ? WHERE idproduto = ?",
                 [produto.nome,produto.codigo, produto.inclusao, produto.idtipo, produto.marca, produto.ean, produto.idproduto]);
     
             await sql.commit();
@@ -133,7 +133,7 @@ class Produto {
         let lista: Produto[];
     
         await app.sql.connect(async (sql: app.Sql) => {
-            lista = await sql.query("SELECT idproduto, nome, codigo, inclusao, idtipo, marca, ean FROM produto WHERE idproduto = ?", [idproduto]);
+            lista = await sql.query("SELECT idproduto, nome, codigo, date_format(inclusao, '%Y-%m-%d') inclusao, idtipo, marca, ean FROM produto WHERE idproduto = ?", [idproduto]);
         });
     
         return lista[0];

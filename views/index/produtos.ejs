@@ -21,12 +21,10 @@
 			<label for="codigo">Atualizar Código</label>
 			<input type="text" class="form-control" id="codigo" name="codigo" placeholder="Digite Código">
 		  </div>
-		  <div class="form-row">
 			<div class="form-group">
 			  <label for="inclusao">Atualizar Data Inclusão</label>
 			  <input type="date" class="form-control" id="inclusao" name="inclusao">
 			</div>
-		  </div>
 		  <div class="form-group">
 			<label for="idtipo">Atualizar Tipo de Produto</label>
 			<select class="form-control" id="idtipo" name="idtipo">
@@ -56,27 +54,6 @@
 	</div>
   </div>
   
-
-<div class="modal fade" id="modalExcluir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalExcluirLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Produto</h1>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Certeza que quer remover este produto?
-        Esta ação é irreversível, será preciso refazer o cadastro do mesmo!!!
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">FECHAR</button>
-        <button type="button" class="btn btn-danger" onclick="excluir()">EXCLUIR</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 <div class="container-fluid pt-3 produtos">
@@ -142,66 +119,52 @@
   }
 
   async function abrirModalExcluir(id) {
-    let response = await fetch("/api/produto/obter?idproduto=" + id);
+    const result = await Swal.fire({
+      title: "Certeza que quer remover este produto? Esta ação é irreversível, será preciso refazer o cadastro do mesmo!!!",
+      showCancelButton: true,
+      confirmButtonText: "Excluir",
+      cancelButtonText: "Cancelar",
+    });
 
-    if (!response.ok) {
-      // @@@
+    if (!result.isConfirmed)
       return;
-    }
 
-    let produto = await response.json();
-    if (!produto) {
-      // @@@
-      return;
-    }
+    waitSwal();
 
-    document.getElementById("idproduto").value = produto.idproduto;
-    $("#modalExcluir").modal("show");
+    let response = await fetch("/api/produto/excluir?idproduto=" + id, {
+      method: "DELETE"
+    });
+
+    if (response.ok) {
+      await Swal.fire(
+        'Exclusão',
+        'Exclusão feita',
+        'warning'
+      );
+      window.location.reload();
+    } else {
+      await exibirErro(response);
+    }
   }
 
   async function editar(form) {
+    waitSwal();
+
     let response = await fetch("/api/produto/editar", {
       method: "post",
       body: new FormData(form)
     });
 
     if (response.ok) {
-      Swal.fire(
+      await Swal.fire(
         'Cadastro',
         'Produto alterado com sucesso',
         'success'
       );
-      await new Promise(resolve => setTimeout(resolve, 1000));
+
       window.location.reload();
-
-      let idProduto = document.getElementById("idproduto").value;
-      let novoNome = document.getElementById("nome").value;
-	  let novoCod = document.getElementById("codigo").value
-	  let novaData = document.getElementById("inclusao").value
-	  let novoTipo = document.getElementById("idtipo").value
-	  let novoMarca = document.getElementById("marca").value
-      let novoEan = document.getElementById("ean").value;
-
-      let elementoNome = document.getElementById("nome");
-	  let elementoCod = document.getElementById("codigo")
-	  let elementoData = document.getElementById("inclusao")
-	  let elementoTipo = document.getElementById("idtipo")
-	  let elementoMarca = document.getElementById("marca")
-      let elementoEan = document.getElementById("ean");
-
-      if (elementoNome && elementoCod && elementoData && elementoTipo && elementoMarca && elementoEan) {
-        elementoNome.innerHTML = novoNome;
-		elementoCod.innerHTML = novoCod
-		elementoData.innerHTML = novaData
-		elementoTipo.innerHTML = novoTipo
-		elementoMarca.innerHTML = novoMarca
-        elementoEan.innerHTML = novoEan;
-      }
-
-      // Feche o modal de atualização
-      $("#modalAtualizar").modal("hide");
     } else {
-      // @@@
+      await exibirErro(response);
     }
   }
 
@@ -233,22 +196,4 @@
       editar(form);
     }
   });
-
-  async function excluir() {
-    let idProduto = document.getElementById("idproduto").value;
-    let response = await fetch("/api/produto/excluir?idproduto=" + idProduto, {
-      method: "DELETE"
-    });
-
-    if (response.ok) {
-      await Swal.fire(
-        'Exclusão',
-        'Exclusão feita',
-        'warning'
-      );
-      window.location.reload();
-    } else {
-      console.error("Erro ao excluir o produto.");
-    }
-  }
 </script>

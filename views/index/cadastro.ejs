@@ -64,6 +64,8 @@
 
 <script>
 	async function criar(form) {
+		waitSwal();
+
 		let response = await fetch("/api/produto/criar", {
 			method: "post",
 			body: new FormData(form)
@@ -76,7 +78,11 @@
 				'success'
 				);
 		} else {
-
+			Swal.fire(
+				'Erro',
+				'Erro ao criar o produto',
+				'error'
+				);
 		}
 	}
 
