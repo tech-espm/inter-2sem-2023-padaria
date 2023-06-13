@@ -219,18 +219,12 @@ img{
 
 .carousel-inner {
     padding: 2rem;
-    background-color: #e9c174;
+    background-color: #814929;
 }
 
 .titulo-promo {
-    background-color: #814929;
-    color: white;
+    background-color: #e9c174;
 }
-
-.titulo-promo h1{
-    color: white;
-}
-
 .titulo-promo h2 {
     margin: 0;
 }
