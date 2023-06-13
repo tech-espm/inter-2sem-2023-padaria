@@ -205,6 +205,14 @@ img{
     font-weight: bold;
 }
 
+.swal-icon {
+  border-color: #dc3545!important 
+}
+
+.custom-badge-color {
+    background-color: #EB8A3D;
+}
+
 .produtos p {
     font-family: 'Permanent Marker', cursive;
 }

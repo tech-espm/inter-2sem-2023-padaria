@@ -108,22 +108,29 @@
       return;
     }
 
+
     document.getElementById("idproduto").value = produto.idproduto;
     document.getElementById("nome").value = produto.nome;
-	document.getElementById("codigo").value = produto.codigo;
-	document.getElementById("inclusao").value = produto.inclusao;
-	document.getElementById("idtipo").value = produto.idtipo;
-	document.getElementById("marca").value = produto.marca;
+    document.getElementById("codigo").value = produto.codigo;
+    document.getElementById("inclusao").value = produto.inclusao;
+    document.getElementById("idtipo").value = produto.idtipo;
+    document.getElementById("marca").value = produto.marca;
     document.getElementById("ean").value = produto.ean;
     $("#modalAtualizar").modal("show")
   }
 
   async function abrirModalExcluir(id) {
     const result = await Swal.fire({
-      title: "Certeza que quer remover este produto? Esta ação é irreversível, será preciso refazer o cadastro do mesmo!!!",
+      title: 'Certeza ao excluir?',
+      text: "Esta ação é irreversível!",
+      icon: 'info',
       showCancelButton: true,
-      confirmButtonText: "Excluir",
-      cancelButtonText: "Cancelar",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim, quero excluir!',
+      customClass: {
+        icon: 'text-danger swal-icon' // Classe de ícone e cor personalizada
+      }
     });
 
     if (!result.isConfirmed)
