@@ -1,40 +1,61 @@
-<h1>Sou a página de produtos!</h1>
-
-<p>Listagem de produtos (<%= produtos.length %> produtos no total)</p>
-
+<!--
+	<h1>Sou a página de produtos!</h1>
+	<p>Listagem de produtos (<%= produtos.length %> produtos no total)</p>
+-->
 <div class="modal fade" tabindex="-1" id="modalAtualizar">
-  <div class="modal-dialog">
-    <form class="modal-content" id="formAtualizar">
-      <div class="modal-header">
-        <h5 class="modal-title">Atualizar Produto</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <input type="hidden" id="idproduto" name="idproduto">
-        <div class="form-group">
-          <label for="nome">Atualizar Nome</label>
-          <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome">
-        </div>
-        <div class="form-group">
-          <label for="ean">Atualizar EAN</label>
-          <input type="text" class="form-control" id="ean" name="ean" placeholder="Digite EAN">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">
-          <i class="bi bi-x-lg"></i>
-          Cancelar
-        </button>
-        <button type="submit" class="btn btn-success">
-          Salvar
-          <i class="bi bi-save"></i>
-        </button>
-      </div>
-    </form>
+	<div class="modal-dialog">
+	  <form class="modal-content" id="formAtualizar">
+		<div class="modal-header">
+		  <h5 class="modal-title">Atualizar Produto</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <input type="hidden" id="idproduto" name="idproduto">
+		  <div class="form-group">
+			<label for="nome">Atualizar Nome</label>
+			<input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome">
+		  </div>
+		  <div class="form-group">
+			<label for="codigo">Atualizar Código</label>
+			<input type="text" class="form-control" id="codigo" name="codigo" placeholder="Digite Código">
+		  </div>
+		  <div class="form-row">
+			<div class="form-group">
+			  <label for="inclusao">Atualizar Data Inclusão</label>
+			  <input type="date" class="form-control" id="inclusao" name="inclusao">
+			</div>
+		  </div>
+		  <div class="form-group">
+			<label for="idtipo">Atualizar Tipo de Produto</label>
+			<select class="form-control" id="idtipo" name="idtipo">
+			  <option value="1">Salgados</option>
+			  <option value="2">Doces</option>
+			  <option value="3">Frios</option>
+			</select>
+		  </div>
+		  <div class="form-group">
+			<label for="marca">Atualizar Marca</label>
+			<input type="text" class="form-control" id="marca" name="marca">
+		  </div>
+		  <div class="form-group">
+			<label for="ean">Atualizar EAN</label>
+			<input type="text" class="form-control" id="ean" name="ean" placeholder="Digite EAN">
+		  </div>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-danger" data-dismiss="modal">
+			<i class="bi bi-x-lg"> CANCELAR</i>
+		  </button>
+		  <button type="submit" class="btn btn-primary">
+			<i class="bi bi-save"> SALVAR</i>
+		  </button>
+		</div>
+	  </form>
+	</div>
   </div>
-</div>
+  
 
 <div class="modal fade" id="modalExcluir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalExcluirLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -50,15 +71,15 @@
         Esta ação é irreversível, será preciso refazer o cadastro do mesmo!!!
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="excluir()">Understood</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">FECHAR</button>
+        <button type="button" class="btn btn-danger" onclick="excluir()">EXCLUIR</button>
       </div>
     </div>
   </div>
 </div>
 
 
-<div class="container-fluid pt-3">
+<div class="container-fluid pt-3 produtos">
   <div id="divProdutos" class="row">
     <% for (let i = 0; i < produtos.length; i++) { %>
     <div class="col-md-6">
@@ -66,21 +87,22 @@
         background-image: url('/public/img/produtos/<%= produtos[i].idproduto %>.jpg');
         background-size: cover;
         background-position: center;
+		border-radius: 1rem;
       ">
         <div class="card-body fundo-dark">
-          <h5 class="card-title" id="nome"><%= produtos[i].nome %></h5>
-          <p class="card-text"><%= produtos[i].codigo %></p>
-          <p class="card-text"><%= produtos[i].tipo %></p>
-          <p class="card-text"><%= produtos[i].inclusao %></p>
-          <p class="card-text"><%= produtos[i].marca %></p>
-          <p class="card-text" id="ean"><%= produtos[i].ean %></p>
+          <h5 class="card-title text-center titulo" id="nome"><%= produtos[i].nome %></h5>
+          <p class="card-text">CÓDI: <%= produtos[i].codigo %></p>
+          <p class="card-text">TIPO: <%= produtos[i].tipo %></p>
+          <p class="card-text">DATA: <%= produtos[i].inclusao %></p>
+          <p class="card-text">MARCA: <%= produtos[i].marca %></p>
+          <p class="card-text" id="ean"> EAN: <%= produtos[i].ean %></p>
           <hr>
           <p class="botao-editar">
             <button type="button" class="btn btn-outline-light btn py-1" onclick="abrirModalAtualizar('<%= produtos[i].idproduto %>')">
-              <i class="bi bi-pencil-square"></i>
+              <i class="bi bi-pencil-square"> EDITAR</i>
             </button>
             <button type="button" class="btn btn-outline-danger btn py-1" onclick="abrirModalExcluir('<%= produtos[i].idproduto %>')">
-              <i class="bi bi-x-square"></i>
+              <i class="bi bi-x-square"> EXCLUIR </i>
             </button>
           </p>
         </div>
@@ -111,6 +133,10 @@
 
     document.getElementById("idproduto").value = produto.idproduto;
     document.getElementById("nome").value = produto.nome;
+	document.getElementById("codigo").value = produto.codigo;
+	document.getElementById("inclusao").value = produto.inclusao;
+	document.getElementById("idtipo").value = produto.idtipo;
+	document.getElementById("marca").value = produto.marca;
     document.getElementById("ean").value = produto.ean;
     $("#modalAtualizar").modal("show")
   }
@@ -150,13 +176,25 @@
 
       let idProduto = document.getElementById("idproduto").value;
       let novoNome = document.getElementById("nome").value;
+	  let novoCod = document.getElementById("codigo").value
+	  let novaData = document.getElementById("inclusao").value
+	  let novoTipo = document.getElementById("idtipo").value
+	  let novoMarca = document.getElementById("marca").value
       let novoEan = document.getElementById("ean").value;
 
       let elementoNome = document.getElementById("nome");
+	  let elementoCod = document.getElementById("codigo")
+	  let elementoData = document.getElementById("inclusao")
+	  let elementoTipo = document.getElementById("idtipo")
+	  let elementoMarca = document.getElementById("marca")
       let elementoEan = document.getElementById("ean");
 
-      if (elementoNome && elementoEan) {
+      if (elementoNome && elementoCod && elementoData && elementoTipo && elementoMarca && elementoEan) {
         elementoNome.innerHTML = novoNome;
+		elementoCod.innerHTML = novoCod
+		elementoData.innerHTML = novaData
+		elementoTipo.innerHTML = novoTipo
+		elementoMarca.innerHTML = novoMarca
         elementoEan.innerHTML = novoEan;
       }
 

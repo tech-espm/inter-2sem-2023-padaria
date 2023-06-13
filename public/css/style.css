@@ -108,6 +108,7 @@ h1 {
 }
 .fundo-dark {
     background-color: rgba(0,0,0,0.5);
+    border-radius: 1rem;
 
 }
 .botao-editar {
@@ -197,4 +198,13 @@ img{
     width: 500px;
     max-width: 100%;
     margin: 0 auto;
+}
+
+.titulo {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.produtos p {
+    font-family: 'Permanent Marker', cursive;
 }

@@ -38,11 +38,10 @@ class Produto {
             return "Nome do produto inválido";
         }
 
-        // @@@
-
         if (!produto.codigo) {
             return "Codigo Invalido inválido";
         }
+        
         if (!produto.inclusao) {
             return "Data inválida";
         }
@@ -56,7 +55,6 @@ class Produto {
             return "Marca inválida";
         }
 
-        
         if (!produto.ean) {
             return "EAN inválida";
         }
@@ -86,18 +84,29 @@ class Produto {
             return "Nome do produto inválido";
         }
 
+        if (!produto.codigo) {
+            return "Codigo inválido"
+        }
+        // @@@
+
+        if (!produto.inclusao) {
+            return "Inclusao inválida"
+        }
+        if (!produto.idtipo) {
+            return "ID tipo inválido"
+        }
+        if (!produto.marca) {
+            return "Marca inválido"
+        }
         if (!produto.ean) {
             return "EAN inválido"
         }
-        // @@@
-        
 
         await app.sql.connect(async (sql: app.Sql) => {
-            // @@@
             await sql.beginTransaction();
 
-            await sql.query("UPDATE produto SET nome = ?, ean = ? WHERE idproduto = ?",
-                [produto.nome,produto.ean, produto.idproduto]);
+            await sql.query("UPDATE produto SET nome = ?, codigo = ? inclusao = ? idtipo = ? marca = ? ean = ? WHERE idproduto = ?",
+                [produto.nome,produto.codigo, produto.inclusao, produto.idtipo, produto.marca, produto.ean, produto.idproduto]);
     
             await sql.commit();
         });

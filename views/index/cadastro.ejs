@@ -8,11 +8,11 @@
 						<div class="form-row">
 							<div class="form-group col-md-6">
 							  <label for="nome">Nome Produto</label>
-							  <input type="text" class="form-control" id="nome" name="nome">
+							  <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite nome do produto">
 							</div>
 							<div class="form-group col-md-6">
 							  <label for="codigo">Código Produto</label>
-							  <input type="text" class="form-control" id="codigo" name="codigo">
+							  <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Digite código do produto">
 							</div>
 						  </div>
 						  <div class="form-row">
@@ -23,16 +23,21 @@
 						  </div>
 						  <div class="form-group">
 							<label for="idtipo">Tipo de produto</label>
-							<input type="number" class="form-control" id="idtipo" name="idtipo">
+							<select class="form-control" id="idtipo" name="idtipo">	
+								<option>Escolha tipo de produto</option>
+							  <option value="1">Salgados</option>
+							  <option value="2">Doces</option>
+							  <option value="3">Frios</option>
+							</select>
 						  </div>
 						  <div class="form-row">
 							<div class="form-group col-md-6">
 							  <label for="marca">Marca do produto</label>
-							  <input type="text" class="form-control" id="marca" name="marca">
+							  <input type="text" class="form-control" id="marca" name="marca" placeholder="Coloque a marca do produto">
 							</div>
 							<div class="form-group col-md-4">
 							  <label for="ean">EAN</label>
-							  <input type="text" class="form-control" id="ean" name="ean">
+							  <input type="text" class="form-control" id="ean" name="ean" placeholder="Digite EAN do produto">
 							</div>
 						  </div>
 						  <div class="form-group">
