@@ -190,12 +190,12 @@ img{
 
 .fundo-promo {
     background-color: #e9c174;
-    padding-top: 2rem;
+    padding-top: 1rem;
 }
 
 .imagem-carrossel {
     display: block;
-    width: 500px;
+    width: 400px;
     max-width: 100%;
     margin: 0 auto;
 }
@@ -207,4 +207,22 @@ img{
 
 .produtos p {
     font-family: 'Permanent Marker', cursive;
+}
+
+.carousel-inner {
+    padding: 2rem;
+    background-color: #e9c174;
+}
+
+.titulo-promo {
+    background-color: #814929;
+    color: white;
+}
+
+.titulo-promo h1{
+    color: white;
+}
+
+.titulo-promo h2 {
+    margin: 0;
 }
