@@ -21,18 +21,18 @@
 			<label for="codigo">Atualizar Código</label>
 			<input type="text" class="form-control" id="codigo" name="codigo" placeholder="Digite Código">
 		  </div>
+      <div class="form-group">
+        <label for="idtipo">Atualizar Tipo de Produto</label>
+        <select class="form-control" id="idtipo" name="idtipo">
+          <option value="1">Salgados</option>
+          <option value="2">Doces</option>
+          <option value="3">Frios</option>
+        </select>
+        </div>
 			<div class="form-group">
 			  <label for="inclusao">Atualizar Data Inclusão</label>
 			  <input type="date" class="form-control" id="inclusao" name="inclusao">
 			</div>
-		  <div class="form-group">
-			<label for="idtipo">Atualizar Tipo de Produto</label>
-			<select class="form-control" id="idtipo" name="idtipo">
-			  <option value="1">Salgados</option>
-			  <option value="2">Doces</option>
-			  <option value="3">Frios</option>
-			</select>
-		  </div>
 		  <div class="form-group">
 			<label for="marca">Atualizar Marca</label>
 			<input type="text" class="form-control" id="marca" name="marca">
@@ -67,7 +67,7 @@
 		border-radius: 1rem;
       ">
         <div class="card-body fundo-dark">
-          <h5 class="card-title text-center titulo" id="nome"><%= produtos[i].nome %></h5>
+          <h5 class="card-title text-center titulo-card" id="nome"><%= produtos[i].nome %></h5>
           <p class="card-text">CÓDI: <%= produtos[i].codigo %></p>
           <p class="card-text">TIPO: <%= produtos[i].tipo %></p>
           <p class="card-text">DATA: <%= produtos[i].inclusao %></p>
@@ -164,7 +164,7 @@
 
     if (response.ok) {
       await Swal.fire(
-        'Cadastro',
+        'Atualização',
         'Produto alterado com sucesso',
         'success'
       );

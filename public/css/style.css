@@ -101,6 +101,7 @@ h1 {
 
 .gradiente {
     background: linear-gradient(135deg, #0d0d0e, #e9c174);
+    color: white;
 }
 
 .img-centro {
@@ -200,7 +201,7 @@ img{
     margin: 0 auto;
 }
 
-.titulo {
+.titulo-card {
     text-transform: uppercase;
     font-weight: bold;
 }
@@ -217,7 +218,7 @@ img{
     font-family: 'Permanent Marker', cursive;
 }
 
-.carousel-inner {
+.promocao {
     padding: 2rem;
     background-color: #814929;
 }
@@ -227,4 +228,12 @@ img{
 }
 .titulo-promo h2 {
     margin: 0;
+}
+
+.cadastro label {
+    font-weight: bold;
+}
+
+.titulo2 {
+    font-weight: bold;
 }
