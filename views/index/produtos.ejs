@@ -68,11 +68,11 @@
       ">
         <div class="card-body fundo-dark">
           <h5 class="card-title text-center titulo-card" id="nome"><%= produtos[i].nome %></h5>
-          <p class="card-text">CÓDI: <%= produtos[i].codigo %></p>
-          <p class="card-text">TIPO: <%= produtos[i].tipo %></p>
-          <p class="card-text">DATA: <%= produtos[i].inclusao %></p>
-          <p class="card-text">MARCA: <%= produtos[i].marca %></p>
-          <p class="card-text" id="ean"> EAN: <%= produtos[i].ean %></p>
+          <p class="card-text"><span>CODI: </span> <%= produtos[i].codigo %></p>
+          <p class="card-text"><span>TIPO: </span> <%= produtos[i].tipo %></p>
+          <p class="card-text"><span>DATA: </span> <%= produtos[i].inclusao %></p>
+          <p class="card-text"><span>MARCA: </span> <%= produtos[i].marca %></p>
+          <p class="card-text" id="ean"><span>EAN: </span> <%= produtos[i].ean %></p>
           <hr>
           <p class="botao-editar">
             <button type="button" class="btn btn-outline-light btn py-1" onclick="abrirModalAtualizar('<%= produtos[i].idproduto %>')">

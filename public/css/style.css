@@ -204,6 +204,8 @@ img{
 .titulo-card {
     text-transform: uppercase;
     font-weight: bold;
+    font-family: 'Permanent Marker', cursive;
+
 }
 
 .swal-icon {
@@ -215,7 +217,13 @@ img{
 }
 
 .produtos p {
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Montserrat Alternates';   
+    
+}
+
+.produtos span {
+    font-weight: bold;
+    color: #EB8A3D;
 }
 
 .promocao {
