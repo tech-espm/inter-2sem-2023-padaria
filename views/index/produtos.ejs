@@ -54,12 +54,22 @@
 	</div>
 </div>
   
-
+<div>
+  <div class="form-group">
+    <label for="idtipofiltro">Tipo de produto</label>
+    <select class="form-control" id="idtipofiltro" onchange="filtrar()">	
+      <option value="0">Todos</option>
+      <% for (let i = 0; i < tipos.length; i++) { %>
+        <option value="<%- tipos[i].idtipo %>"><%= tipos[i].nome %></option>
+      <% } %>
+    </select>
+  </div>
+</div>
 
 <div class="container-fluid pt-3 produtos">
   <div id="divProdutos" class="row">
     <% for (let i = 0; i < produtos.length; i++) { %>
-    <div class="col-md-6">
+    <div class="col-md-6 produto idtipo<%= produtos[i].idtipo %>">
       <div class="card text-white mb-3" style="
         background-image: url('/public/img/produtos/<%= produtos[i].idproduto %>.jpg');
         background-size: cover;
@@ -94,6 +104,21 @@
 <script src="/public/js/jquery-validate/localization/messages_pt_BR.min.js"></script>
 
 <script>
+  function filtrar() {
+    const idtipo = parseInt(document.getElementById("idtipofiltro").value);
+    const divProdutos = document.getElementById("divProdutos");
+    const produtos = divProdutos.querySelectorAll(".produto");
+    const nomeClasse = "idtipo" + idtipo;
+
+    for (let i = 0; i < produtos.length; i++) {
+      if (!idtipo || produtos[i].classList.contains(nomeClasse)) {
+        produtos[i].classList.remove("d-none");
+      } else {
+        produtos[i].classList.add("d-none");
+      }
+    }
+  }
+
   async function abrirModalAtualizar(id) {
     let response = await fetch("/api/produto/obter?idproduto=" + id);
 

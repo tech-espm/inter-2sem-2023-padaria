@@ -24,10 +24,10 @@
 						  <div class="form-group">
 							<label for="idtipo">Tipo de produto</label>
 							<select class="form-control" id="idtipo" name="idtipo">	
-								<option>Escolha tipo de produto</option>
-							  <option value="1">Salgados</option>
-							  <option value="2">Doces</option>
-							  <option value="3">Frios</option>
+								<option hidden value="">Escolha tipo de produto</option>
+								<% for (let i = 0; i < tipos.length; i++) { %>
+									<option value="<%- tipos[i].idtipo %>"><%= tipos[i].nome %></option>
+								<% } %>
 							</select>
 						  </div>
 						  <div class="form-row">

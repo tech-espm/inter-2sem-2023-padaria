@@ -18,6 +18,7 @@ class Produto {
             lista = await sql.query(`
                 SELECT p.idproduto, p.nome, p.codigo,
                 date_format(p.inclusao, '%d/%m/%Y') inclusao,
+                p.idtipo,
                 t.nome tipo,
                 p.marca, p.ean
                 FROM produto p

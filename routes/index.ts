@@ -1,5 +1,6 @@
 ﻿import app = require("teem");
 import Produto = require("../models/produto");
+import Tipo = require("../models/tipo");
 
 class IndexRoute {
 	public async index(req: app.Request, res: app.Response) {
@@ -12,7 +13,8 @@ class IndexRoute {
 
 	public async cadastro(req: app.Request, res: app.Response) {
 		let opcoes = {
-			titulo: "Cadastro"
+			titulo: "Cadastro",
+			tipos: await Tipo.listar()
 		};
 		res.render("index/cadastro",opcoes);
 	}
@@ -36,7 +38,8 @@ class IndexRoute {
 
 		let opcoes = {
 			titulo: "Produtos",
-			produtos: produtosVindosDoBanco
+			produtos: produtosVindosDoBanco,
+			tipos: await Tipo.listar()
 		};
 
 		res.render("index/produtos", opcoes);
