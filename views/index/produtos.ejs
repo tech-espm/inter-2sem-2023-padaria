@@ -52,7 +52,7 @@
 		</div>
 	  </form>
 	</div>
-  </div>
+</div>
   
 
 
@@ -64,8 +64,8 @@
         background-image: url('/public/img/produtos/<%= produtos[i].idproduto %>.jpg');
         background-size: cover;
         background-position: center;
-		border-radius: 1rem;
-      ">
+        border-radius: 1rem;
+        ">
         <div class="card-body fundo-dark">
           <h5 class="card-title text-center titulo-card" id="nome"><%= produtos[i].nome %></h5>
           <p class="card-text"><span>CODI: </span> <%= produtos[i].codigo %></p>
@@ -98,13 +98,13 @@
     let response = await fetch("/api/produto/obter?idproduto=" + id);
 
     if (!response.ok) {
-      // @@@
+      
       return;
     }
 
     let produto = await response.json();
     if (!produto) {
-      // @@@
+
       return;
     }
 
@@ -129,7 +129,7 @@
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sim, quero excluir!',
       customClass: {
-        icon: 'text-danger swal-icon' // Classe de ícone e cor personalizada
+        icon: 'text-danger swal-icon'
       }
     });
 
