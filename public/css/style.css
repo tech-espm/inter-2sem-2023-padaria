@@ -262,3 +262,12 @@ img{
 .titulo2 {
     font-weight: bold;
 }
+
+.label-tipo {
+    font-weight: bold;
+    font-family: 'Montserrat Alternates'; 
+
+}
+.filtro {
+    font-family: 'Montserrat Alternates'; 
+}

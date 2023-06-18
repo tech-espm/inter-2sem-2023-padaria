@@ -1,7 +1,3 @@
-<!--
-	<h1>Sou a página de produtos!</h1>
-	<p>Listagem de produtos (<%= produtos.length %> produtos no total)</p>
--->
 <div class="modal fade" tabindex="-1" id="modalAtualizar">
 	<div class="modal-dialog">
 	  <form class="modal-content" id="formAtualizar">
@@ -53,20 +49,52 @@
 	  </form>
 	</div>
 </div>
-  
-<div>
-  <div class="form-group">
-    <label for="idtipofiltro">Tipo de produto</label>
-    <select class="form-control" id="idtipofiltro" onchange="filtrar()">	
-      <option value="0">Todos</option>
-      <% for (let i = 0; i < tipos.length; i++) { %>
-        <option value="<%- tipos[i].idtipo %>"><%= tipos[i].nome %></option>
-      <% } %>
-    </select>
+
+<!-- Modal de filtragem -->
+<div class="modal fade" id="modalFiltragem" tabindex="-1" role="dialog" aria-labelledby="modalFiltragemLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalFiltragemLabel">Filtragem de Produtos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid pt-3 produtos">
+          <div class="row">
+            <div class="col">
+              <div class="card bg-light" style="margin: 10px 10px 10px 0px; padding: 10px; max-width: 400px;">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label class="label-tipo" for="idtipofiltro">TIPO DE PRODUTO</label>
+                    <select class="form-control" id="idtipofiltro">
+                      <option value="0">Todos</option>
+                      <% for (let i = 0; i < tipos.length; i++) { %>
+                      <option value="<%- tipos[i].idtipo %>"><%= tipos[i].nome %></option>
+                      <% } %>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary my-2" onclick="filtrar()"><i class="bi bi-funnel-fill filtro">FILTRAR</i></button>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="container-fluid pt-3 produtos">
+  <div class="row">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalFiltragem">
+      FILTRO
+    </button>
+  </div>
+  
   <div id="divProdutos" class="row">
     <% for (let i = 0; i < produtos.length; i++) { %>
     <div class="col-md-6 produto idtipo<%= produtos[i].idtipo %>">
@@ -105,18 +133,23 @@
 
 <script>
   function filtrar() {
+    waitSwal();
     const idtipo = parseInt(document.getElementById("idtipofiltro").value);
     const divProdutos = document.getElementById("divProdutos");
     const produtos = divProdutos.querySelectorAll(".produto");
     const nomeClasse = "idtipo" + idtipo;
 
     for (let i = 0; i < produtos.length; i++) {
+
       if (!idtipo || produtos[i].classList.contains(nomeClasse)) {
         produtos[i].classList.remove("d-none");
       } else {
         produtos[i].classList.add("d-none");
-      }
+      } 
     }
+    $("#modalFiltragem").modal("hide")
+    Swal.close();
+   
   }
 
   async function abrirModalAtualizar(id) {
