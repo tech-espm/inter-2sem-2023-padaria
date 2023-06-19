@@ -204,6 +204,7 @@ img{
 
 .alinhamento {
     padding: 1rem;
+    text-align: center;
 }
 
 .fundo-promo {
@@ -275,4 +276,9 @@ img{
 }
 .filtro {
     font-family: 'Montserrat Alternates'; 
+}
+
+.linha-nav {
+    border-color: black;
+    margin: 0;
 }
