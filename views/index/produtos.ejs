@@ -1,3 +1,4 @@
+<!-- Modal de Atualização -->
 <div class="modal fade" tabindex="-1" id="modalAtualizar">
 	<div class="modal-dialog">
 	  <form class="modal-content" id="formAtualizar">
@@ -82,7 +83,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary my-2" onclick="filtrar()"><i class="bi bi-funnel-fill filtro">FILTRAR</i></button>
+        <button type="button" class="btn btn-primary my-2" onclick="filtrar()">FILTRAR</button>
       </div>
     </div>
   </div>
@@ -90,8 +91,8 @@
 
 <div class="container-fluid pt-3 produtos">
   <div class="row" style="padding: 0 0 10px 15px;">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalFiltragem">
-      FILTRO
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalFiltragem">
+      <i class="bi bi-funnel-fill filtro"></i>
     </button>
   </div>
   
@@ -203,7 +204,7 @@
     if (response.ok) {
       await Swal.fire(
         'Exclusão',
-        'Exclusão feita',
+        'Produto excluído',
         'warning'
       );
       window.location.reload();

@@ -5,6 +5,7 @@
 				<h3 class="card-header titulo2">CADASTRO DO PRODUTO</h3>
 				<div class="card-body">
 					<form id="formCadastro" class="cadastro">
+
 						<div class="form-row">
 							<div class="form-group col-md-6">
 							  <label for="nome">Nome Produto</label>
@@ -15,12 +16,14 @@
 							  <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Digite código do produto">
 							</div>
 						  </div>
+
 						  <div class="form-row">
 							<div class="form-group col-md-6">
 								<label for="inclusao">Data Inclusão</label>
 								<input type="date" class="form-control" id="inclusao" name="inclusao">
 							</div>
 						  </div>
+
 						  <div class="form-group">
 							<label for="idtipo">Tipo de produto</label>
 							<select class="form-control" id="idtipo" name="idtipo">	
@@ -30,6 +33,7 @@
 								<% } %>
 							</select>
 						  </div>
+
 						  <div class="form-row">
 							<div class="form-group col-md-6">
 							  <label for="marca">Marca do produto</label>
@@ -40,21 +44,23 @@
 							  <input type="text" class="form-control" id="ean" name="ean" placeholder="Digite EAN do produto">
 							</div>
 						  </div>
+
 						  <div class="form-group">
 							<label for="imagem">Imagem Produto</label>
 							<input class="form-control" type="file" id="imagem" name="imagem" accept="image/*" />
 						</div>
+
 						  <div class="separar pb-2"></div>
 						  <hr class="mb-4">
-						  <button type="submit" class="btn btn-outline-light btn-block gradiente py-3">Cadastrar</button>
-						  <!--<button type="button" class="btn btn-primary btn py-3" onclick="abrirModalAtualizar()">Atualizar</button>-->
+						  <button type="submit" class="btn btn-outline-light btn-block gradiente py-3" style="font-family: 'Montserrat Alternates';">CADASTRAR</button>
+
 					</form>
 				</div>
 			</div>
 		</div>
+
 		<div class="col-md-6 py-2 img-centro">
 			<img src="/public/img/img2.png" class="pao py-3 px-2 mx-4">
-
 		</div>
 	</div>
 </div>
@@ -75,13 +81,13 @@
 		if (response.ok) {
 			Swal.fire(
 				'Cadastro',
-				'Produto criado com sucesso',
+				'Produto cadastrado com sucesso',
 				'success'
 				);
 		} else {
 			Swal.fire(
 				'Erro',
-				'Erro ao criar o produto',
+				'Erro ao cadastrar o produto',
 				'error'
 				);
 		}
